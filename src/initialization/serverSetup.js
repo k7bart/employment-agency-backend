@@ -1,7 +1,9 @@
 const express = require("express");
 const cors = require("cors");
-const mongoose = require("mongoose");
+const swaggerJsDoc = require("swagger-jsdoc");
+const swaggerUI = require("swagger-ui-express");
 const router = require("../router");
+const mongoose = require("mongoose");
 
 const dotenv = require("dotenv");
 dotenv.config({ path: ".env.local" });
@@ -13,6 +15,8 @@ const {
   SERVER_PORT,
   CLIENT_URL,
 } = require("../../config");
+
+const swaggerOptions = require("../../swagger-settings");
 
 const serverSetup = async (app) => {
   const DB = MONGODB_URL.replace("<USER>", MONGODB_USER).replace(
@@ -32,6 +36,9 @@ const serverSetup = async (app) => {
       origin: CLIENT_URL,
     })
   );
+
+  const swaggerSettings = swaggerJsDoc(swaggerOptions);
+  app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerSettings));
 
   app.use("/", router);
 
