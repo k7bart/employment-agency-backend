@@ -1,0 +1,72 @@
+definitions:
+  candidate:
+    type: object
+    properties:
+      _id:
+        type: string
+      firstName:
+        type: string
+      lastName:
+        type: string
+      patronymic:
+        type: string
+      area:
+        type: string
+      qualification:
+        type: string
+      salary:
+        type: number
+      address:
+        type: object
+        properties:
+          country:
+            type: string
+          city:
+            type: string
+        required:
+          - country
+          - city
+      phone:
+        type: string
+    required:
+      - _id
+      - firstName
+      - lastName
+      - phone
+      - address
+      - skills
+
+  candidates:
+    type: array
+    items:
+      $ref: "#/definitions/candidate"
+
+  postCandidateBody:
+    type: object
+    properties:
+      _id:
+        type: string
+      firstName:
+        type: string
+        minLength: 1
+      lastName:
+        type: string
+        minLength: 1
+      patronymic:
+        type: string
+        minLength: 1
+      area:
+        type: string
+      qualification:
+        type: string
+      salary:
+        type: number
+      address:
+        type: object
+        properties:
+          country:
+            type: string
+          city:
+            type: string
+      phone:
+        type: string
