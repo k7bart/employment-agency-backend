@@ -1,10 +1,13 @@
 const router = require("express").Router();
 const candidatesController = require("./candidates.controller");
 
-router.get("/", candidatesController.getCandidates);
+router
+  .route("/")
+  .get(candidatesController.getCandidates)
+  .post(candidatesController.createCandidate);
 
-router.get("/:id", candidatesController.getCandidateById);
+router.get("/suitable", candidatesController.getSuitableCandidates);
 
-router.post("/", candidatesController.createCandidate);
+router.get("/candidate/:id", candidatesController.getCandidateById);
 
 module.exports = router;
