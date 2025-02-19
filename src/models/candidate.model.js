@@ -33,16 +33,24 @@ const candidateSchema = new Schema({
     ],
   },
 
-  area: { type: String },
+  area: {
+    type: Schema.Types.ObjectId,
+    ref: "Area",
+    required: createRequired("area"),
+  },
 
   qualification: { type: String },
 
   salary: { type: Number },
 
-  address: {
+  location: {
     country: {
       type: String,
       required: createRequired("country"),
+    },
+    flag: {
+      type: String,
+      required: createRequired("flag"),
     },
     city: {
       type: String,

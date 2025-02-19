@@ -1,8 +1,6 @@
 const { Schema, model } = require("mongoose");
 
-const {
-  createRequiredFieldValidator,
-} = require("../utils/fieldValidationUtils");
+const { createRequired } = require("../utils/fieldValidationUtils");
 
 const {
   FIELD_CANNOT_BE_SHORTER,
@@ -15,7 +13,7 @@ const { MIN_NAME_LENGTH, MAX_AREA_NAME_LENGTH } =
 const areaSchema = new Schema({
   name: {
     type: String,
-    required: createRequiredFieldValidator("name"),
+    required: createRequired("name"),
     minLength: [
       MIN_NAME_LENGTH,
       FIELD_CANNOT_BE_SHORTER("area name", MIN_NAME_LENGTH),
