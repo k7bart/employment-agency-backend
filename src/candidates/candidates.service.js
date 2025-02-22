@@ -24,20 +24,18 @@ const getSuitableCandidates = async (
   minSalary,
   maxSalary
 ) => {
-  const query = {
-    area: areaId,
-    "location.country": country,
-    "location.city": city,
-  };
+  const query = { area: areaId };
 
-  const salary = {
-    ...(minSalary && { $gte: minSalary }),
-    ...(maxSalary && { $lte: maxSalary }),
-  };
+  if (country) query["location.country"] = country;
+  if (city) query["location.city"] = city;
 
-  if (Object.keys(salary).length) query.salary = salary;
+  if (minSalary || maxSalary) {
+    query.salary = {};
+    if (minSalary) query.salary.$gte = minSalary;
+    if (maxSalary) query.salary.$lte = maxSalary;
+  }
 
-  return await Candidate.find(query).populate("area").lean();
+  return Candidate.find(query).populate("area").lean();
 };
 
 const createCandidate = async (data) => {
