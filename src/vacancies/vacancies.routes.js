@@ -1,12 +1,15 @@
 const router = require("express").Router();
 const vacanciesController = require("./vacancies.controller");
 
-router.get("/", vacanciesController.getVacancies);
+router
+  .route("/")
+  .get(vacanciesController.getVacancies)
+  .post(vacanciesController.createVacancy);
 
-router.get("/:id", vacanciesController.getVacancyById);
+router.get("/suitable", vacanciesController.getSuitableVacancies);
+
+router.get("/vacancy/:id", vacanciesController.getVacancyById);
 
 router.get("/employer/:id", vacanciesController.getVacanciesByEmployerId);
-
-router.post("/", vacanciesController.createVacancy);
 
 module.exports = router;

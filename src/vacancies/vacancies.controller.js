@@ -1,5 +1,18 @@
 const vacanciesService = require("./vacancies.service");
 
+const getSuitableVacancies = async (req, res) => {
+  const { areaId, country, city, salary } = req.query;
+
+  const vacancies = await vacanciesService.getSuitableVacancies(
+    areaId,
+    country,
+    city,
+    salary
+  );
+
+  res.status(200).json(vacancies);
+};
+
 const getVacancies = async (_req, res) => {
   const vacancies = await vacanciesService.getVacancies();
 
@@ -31,6 +44,7 @@ const createVacancy = async (req, res) => {
 };
 
 module.exports = {
+  getSuitableVacancies,
   getVacancies,
   getVacancyById,
   getVacanciesByEmployerId,
