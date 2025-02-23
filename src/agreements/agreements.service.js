@@ -1,12 +1,14 @@
 const Agreement = require("../models/agreement.model");
 
+const { createNotFoundError } = require("../utils/errorsUtils");
+
 const getAgreements = async () => {
   return Agreement.find()
     .populate("candidate")
     .populate({
       path: "vacancy",
       populate: {
-        path: "employer",
+        path: "area employer",
       },
     })
     .lean();
@@ -18,14 +20,14 @@ const getAgreementById = async (agreementId) => {
     .populate({
       path: "vacancy",
       populate: {
-        path: "employer",
+        path: "area employer",
       },
     })
     .lean();
 
-  // if (!agreement) {
-  //   throw createNotFoundError()
-  // }
+  if (!agreement) {
+    throw createNotFoundError();
+  }
 
   return agreement;
 };
