@@ -1,4 +1,4 @@
-const candidatesService = require("./candidates.service");
+const candidatesService = require("./candidate.service");
 
 const getCandidates = async (_req, res) => {
   const candidates = await candidatesService.getCandidates();

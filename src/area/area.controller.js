@@ -1,4 +1,4 @@
-const areasService = require("./areas.service");
+const areasService = require("./area.service");
 
 const getAreas = async (_req, res) => {
   const areas = await areasService.getAreas();

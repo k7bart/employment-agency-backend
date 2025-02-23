@@ -1,4 +1,4 @@
-const employersService = require("./employers.service");
+const employersService = require("./employer.service");
 
 const getEmployers = async (_req, res) => {
   const employers = await employersService.getEmployers();

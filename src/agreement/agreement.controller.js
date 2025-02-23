@@ -1,4 +1,4 @@
-const agreementsService = require("./agreements.service");
+const agreementsService = require("./agreement.service");
 
 const getAgreements = async (_req, res) => {
   const agreements = await agreementsService.getAgreements();

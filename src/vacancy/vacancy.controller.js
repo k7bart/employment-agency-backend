@@ -1,4 +1,4 @@
-const vacanciesService = require("./vacancies.service");
+const vacanciesService = require("./vacancy.service");
 
 const getSuitableVacancies = async (req, res) => {
   const { areaId, country, city, salary } = req.query;

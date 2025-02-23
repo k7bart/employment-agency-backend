@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const { asyncWrapper } = require("../middlewares/error.middleware");
-const vacanciesController = require("./vacancies.controller");
+const vacanciesController = require("./vacancy.controller");
 
 router
   .route("/")
