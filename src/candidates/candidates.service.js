@@ -24,7 +24,7 @@ const getCandidateIdByFirstAndLastName = async (firstName, lastName) => {
     throw createNotFoundError();
   }
 
-  return candidate;
+  return candidate._id;
 };
 
 const getSuitableCandidates = async (

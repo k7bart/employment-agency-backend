@@ -13,7 +13,7 @@ const signup = async (req, res) => {
 
   const token = await authService.signup(email, password);
 
-  return res.status(200).json(token);
+  return res.status(201).json(token);
 };
 
 module.exports = {
