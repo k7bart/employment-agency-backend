@@ -5,8 +5,7 @@ const swaggerUI = require("swagger-ui-express");
 const router = require("../router");
 const mongoose = require("mongoose");
 
-const dotenv = require("dotenv");
-dotenv.config({ path: ".env.local" });
+const errorMiddleware = require("../middlewares/error.middleware");
 
 const {
   MONGODB_URL,
@@ -41,6 +40,8 @@ const serverSetup = async (app) => {
   app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerSettings));
 
   app.use("/", router);
+
+  app.use(errorMiddleware);
 
   return app.listen(SERVER_PORT, () => {
     console.log(`Server is running on port ${SERVER_PORT}`);
