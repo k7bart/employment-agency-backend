@@ -5,7 +5,7 @@ const area = require("./area/area.routes");
 const auth = require("./auth/auth.routes");
 const candidate = require("./candidate/candidate.routes");
 const employer = require("./employer/employer.routes");
-const vacancies = require("./vacancy/vacancy.routes");
+const vacancy = require("./vacancy/vacancy.routes");
 
 const { checkAuth } = require("./middlewares/auth");
 
@@ -14,6 +14,6 @@ router.use("/areas", checkAuth, area);
 router.use("/auth", auth);
 router.use("/candidates", checkAuth, candidate);
 router.use("/employers", checkAuth, employer);
-router.use("/vacancies", checkAuth, vacancies);
+router.use("/vacancies", checkAuth, vacancy);
 
 module.exports = router;

@@ -4,7 +4,7 @@ const { JWT_SECRET } = require("../../config");
 
 const { createUnauthorizedError } = require("../utils/errorsUtils");
 
-const checkAuth = (req, next) => {
+const checkAuth = (req, _res, next) => {
   try {
     const token = req.headers.authorization.split(" ")[1];
     jwt.verify(token, JWT_SECRET);
