@@ -1,5 +1,4 @@
 const { Schema, model } = require("mongoose");
-// const validator = require("validator");
 const bcrypt = require("bcrypt");
 
 const { createRequired } = require("../utils/fieldValidationUtils");
