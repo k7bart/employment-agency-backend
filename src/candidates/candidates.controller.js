@@ -14,6 +14,17 @@ const getCandidateById = async (req, res) => {
   res.status(200).json(candidate);
 };
 
+const getCandidateIdByFirstAndLastName = async (req, res) => {
+  const { firstName, lastName } = req.query;
+
+  const candidate = await candidatesService.getCandidateIdByFirstAndLastName(
+    firstName,
+    lastName
+  );
+
+  res.status(200).json(candidate);
+};
+
 const getSuitableCandidates = async (req, res) => {
   const { areaId, country, city, minSalary, maxSalary } = req.query;
 
@@ -39,6 +50,7 @@ const createCandidate = async (req, res) => {
 module.exports = {
   getCandidates,
   getCandidateById,
+  getCandidateIdByFirstAndLastName,
   getSuitableCandidates,
   createCandidate,
 };

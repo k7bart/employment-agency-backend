@@ -8,6 +8,11 @@ router
 
 router.get("/suitable", candidatesController.getSuitableCandidates);
 
+router.get(
+  "/search/name",
+  candidatesController.getCandidateIdByFirstAndLastName
+);
+
 router.get("/candidate/:id", candidatesController.getCandidateById);
 
 module.exports = router;

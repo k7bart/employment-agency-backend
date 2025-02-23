@@ -17,6 +17,16 @@ const getCandidateById = async (candidateId) => {
   return candidate;
 };
 
+const getCandidateIdByFirstAndLastName = async (firstName, lastName) => {
+  const candidate = await Candidate.findOne({ firstName, lastName }).lean();
+
+  if (!candidate) {
+    throw createNotFoundError();
+  }
+
+  return candidate;
+};
+
 const getSuitableCandidates = async (
   areaId,
   country,
@@ -45,6 +55,7 @@ const createCandidate = async (data) => {
 module.exports = {
   getCandidates,
   getCandidateById,
+  getCandidateIdByFirstAndLastName,
   getSuitableCandidates,
   createCandidate,
 };
