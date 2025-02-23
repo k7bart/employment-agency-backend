@@ -1,10 +1,11 @@
 const router = require("express").Router();
 const agreementsController = require("./agreements.controller");
+const { asyncWrapper } = require("../middlewares/error.middleware");
 
-router.get("/", agreementsController.getAgreements);
+router.get("/", asyncWrapper(agreementsController.getAgreements));
 
-router.get("/:id", agreementsController.getAgreementById);
+router.get("/:id", asyncWrapper(agreementsController.getAgreementById));
 
-router.post("/", agreementsController.createAgreement);
+router.post("/", asyncWrapper(agreementsController.createAgreement));
 
 module.exports = router;

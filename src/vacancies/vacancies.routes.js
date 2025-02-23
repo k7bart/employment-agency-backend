@@ -1,15 +1,19 @@
 const router = require("express").Router();
+const { asyncWrapper } = require("../middlewares/error.middleware");
 const vacanciesController = require("./vacancies.controller");
 
 router
   .route("/")
-  .get(vacanciesController.getVacancies)
-  .post(vacanciesController.createVacancy);
+  .get(asyncWrapper(vacanciesController.getVacancies))
+  .post(asyncWrapper(vacanciesController.createVacancy));
 
-router.get("/suitable", vacanciesController.getSuitableVacancies);
+router.get("/suitable", asyncWrapper(vacanciesController.getSuitableVacancies));
 
-router.get("/vacancy/:id", vacanciesController.getVacancyById);
+router.get("/vacancy/:id", asyncWrapper(vacanciesController.getVacancyById));
 
-router.get("/employer/:id", vacanciesController.getVacanciesByEmployerId);
+router.get(
+  "/employer/:id",
+  asyncWrapper(vacanciesController.getVacanciesByEmployerId)
+);
 
 module.exports = router;

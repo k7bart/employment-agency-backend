@@ -1,10 +1,11 @@
 const router = require("express").Router();
+const { asyncWrapper } = require("../middlewares/error.middleware");
 const employersController = require("./employers.controller");
 
-router.get("/", employersController.getEmployers);
+router.get("/", asyncWrapper(employersController.getEmployers));
 
-router.get("/:id", employersController.getEmployerById);
+router.get("/:id", asyncWrapper(employersController.getEmployerById));
 
-router.post("/", employersController.createEmployer);
+router.post("/", asyncWrapper(employersController.createEmployer));
 
 module.exports = router;

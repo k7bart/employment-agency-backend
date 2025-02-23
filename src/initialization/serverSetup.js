@@ -5,7 +5,7 @@ const swaggerUI = require("swagger-ui-express");
 const router = require("../router");
 const mongoose = require("mongoose");
 
-const errorMiddleware = require("../middlewares/error.middleware");
+const { errorMiddleware } = require("../middlewares/error.middleware");
 
 const {
   MONGODB_URL,
