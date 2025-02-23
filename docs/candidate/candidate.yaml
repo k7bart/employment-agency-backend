@@ -16,8 +16,8 @@ paths:
                 $ref: "#/definitions/candidates"
               example:
                 - _id: 67ae4a8e88d72fd62917c1da
-                  firstName: Test
-                  lastName: Candidate
+                  firstName: Ivan
+                  lastName: Ivanenko
                   area: IT
                   qualification: Junior
                   salary: 600
@@ -37,6 +37,7 @@ paths:
                     city: New York
                   phone: "+14158673094"
                   __v: 0
+
     post:
       tags:
         - Candidates
@@ -51,7 +52,6 @@ paths:
             schema:
               $ref: "#/definitions/postCandidateBody"
             example:
-              _id: 67ae4c5388d72fd62917c1dc
               firstName: John
               lastName: Doe
               area: IT
@@ -61,7 +61,6 @@ paths:
                 country: USA
                 city: New York
               phone: "+14158673094"
-              __v: 0
       responses:
         201:
           description: Created
@@ -81,3 +80,143 @@ paths:
                   city: New York
                 phone: "+14158673094"
                 __v: 0
+
+  /candidates/suitable:
+    get:
+      tags:
+        - Candidates
+      summary: Find all suitable candidates.
+      description: Finds and returns an array with a list of all suitable candidates.
+      produces:
+        - application/json
+      parameters:
+        - name: areaId
+          in: query
+          type: string
+          description: Area
+          required: true
+        - name: country
+          in: query
+          type: string
+          description: Country
+        - name: city
+          in: query
+          type: string
+          description: City
+        - name: minSalary
+          in: query
+          type: number
+          description: Minimum salary
+        - name: maxSalary
+          in: query
+          type: number
+          description: Maximum salary
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/definitions/candidates"
+              example:
+                - _id: 67ae4a8e88d72fd62917c1da
+                  firstName: Ivan
+                  lastName: Ivanenko
+                  area: IT
+                  qualification: Junior
+                  salary: 600
+                  address:
+                    country: Ukraine
+                    city: Lviv
+                  phone: "+380630000000"
+                  __v: 0
+                - _id: 67ae4c5388d72fd62917c1dc
+                  firstName: John
+                  lastName: Doe
+                  area: IT
+                  qualification: Senior
+                  salary: 6000
+                  address:
+                    country: USA
+                    city: New York
+                  phone: "+14158673094"
+                  __v: 0
+
+  /candidates/search/name:
+    get:
+      tags:
+        - Candidates
+      summary: Find candidate by first and last name.
+      description: Finds and returns a candidate by first and last name.
+      produces:
+        - application/json
+      parameters:
+        - name: firstName
+          in: query
+          type: string
+          description: First name
+          required: true
+        - name: lastName
+          in: query
+          type: string
+          description: Last name
+          required: true
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/definitions/candidate"
+              example:
+                _id: 67ae4c5388d72fd62917c1dc
+                firstName: John
+                lastName: Doe
+                area: IT
+                qualification: Senior
+                salary: 6000
+                address:
+                  country: USA
+                  city: New York
+                phone: "+14158673094"
+                __v: 0
+        404:
+          description: Candidate not found
+
+  /candidates/candidate/:id:
+    get:
+      tags:
+        - Candidates
+      summary: Find candidate by ID.
+      description: Finds and returns a candidate by ID.
+      produces:
+        - application/json
+      parameters:
+        - name: id
+          in: path
+          description: ID of the candidate to return
+          required: true
+          schema:
+            type: string
+            example: 67ae4c5388d72fd62917c1dc
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/definitions/candidate"
+              example:
+                _id: 67ae4c5388d72fd62917c1dc
+                firstName: John
+                lastName: Doe
+                area: IT
+                qualification: Senior
+                salary: 6000
+                address:
+                  country: USA
+                  city: New York
+                phone: "+14158673094"
+                __v: 0
+        404:
+          description: Candidate not found

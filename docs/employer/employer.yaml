@@ -1,0 +1,93 @@
+paths:
+  /employers:
+    get:
+      tags:
+        - Employers
+      summary: Find all employers.
+      description: Finds and returns an array with a list of all employers.
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/definitions/employers"
+              example:
+                - _id: 67ae4a8e88d72fd62917c1da
+                  name: "Google"
+                  address:
+                    country: "USA"
+                    flag: "🇺🇸"
+                    region: "California"
+                    city: "Mountain View"
+                    street: "Amphitheatre Parkway"
+                    house: "1600"
+                  phone: "+1 650-253-0000"
+                - _id: 67ae4c5388d72fd62917c1dc
+                  name: "Apple"
+                  address:
+                    country: "USA"
+                    flag: "🇺🇸"
+                    region: "California"
+                    city: "Cupertino"
+                    street: "Infinite Loop"
+                    house: "1"
+                  phone: "+1 408-996-1010"
+    post:
+      tags:
+        - Employers
+      summary: Creates a new employer.
+      description: Creates a new employer and it to the database.
+      produces:
+        - application/json
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/definitions/postEmployerBody"
+            example:
+              name: "Google"
+              address:
+                country: "USA"
+                region: "California"
+                city: "Mountain View"
+                street: "Amphitheatre Parkway"
+                house: "1600"
+              phone: "+1 650-253-0000"
+  /employers/:id:
+    get:
+      tags:
+        - Employers
+      summary: Find employer by ID.
+      description: Returns a single employer.
+      produces:
+        - application/json
+      parameters:
+        - name: id
+          in: path
+          description: ID of the employer to return
+          required: true
+          schema:
+            type: string
+          example: 67ae4a8e88d72fd62917c1da
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/definitions/employer"
+              example:
+                _id: 67ae4a8e88d72fd62917c1da
+                name: "Google"
+                address:
+                  country: "USA"
+                  flag: "🇺🇸"
+                  region: "California"
+                  city: "Mountain View"
+                  street: "Amphitheatre Parkway"
+                  house: "1600"
+                phone: "+1 650-253-0000"

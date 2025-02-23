@@ -1,0 +1,67 @@
+definitions:
+  vacancy:
+    type: object
+    properties:
+      _id:
+        type: string
+      title:
+        type: string
+      employer:
+        type: string
+      area:
+        type: string
+      maxSalary:
+        type: number
+      minSalary:
+        type: number
+      location:
+        type: object
+        properties:
+          country:
+            type: string
+          flag:
+            type: string
+          city:
+            type: string
+      __v:
+        type: number
+    required:
+      - _id
+      - title
+      - employer
+      - area
+
+  vacancies:
+    type: array
+    items:
+      $ref: "#/definitions/vacancy"
+
+  postVacancyBody:
+    type: object
+    properties:
+      title:
+        type: string
+        minLength: 1
+      employer:
+        type: string
+        minLength: 1
+      area:
+        type: string
+        minLength: 1
+      maxSalary:
+        type: number
+      minSalary:
+        type: number
+      location:
+        type: object
+        properties:
+          country:
+            type: string
+          flag:
+            type: string
+          city:
+            type: string
+      required:
+        - title
+        - employer
+        - area

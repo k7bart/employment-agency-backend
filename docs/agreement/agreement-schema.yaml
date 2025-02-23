@@ -1,0 +1,36 @@
+definitions:
+  agreement:
+    type: object
+    properties:
+      _id:
+        type: string
+      candidateId:
+        type: string
+      employerId:
+        type: string
+      commission:
+        type: number
+    required:
+      - _id
+      - candidateId
+      - employerId
+      - commission
+
+  agreements:
+    type: array
+    items:
+      $ref: "#/definitions/agreement"
+
+  postAgreementBody:
+    type: object
+    properties:
+      candidateId:
+        type: string
+      employerId:
+        type: string
+      commission:
+        type: number
+    required:
+      - candidateId
+      - employerId
+      - commission

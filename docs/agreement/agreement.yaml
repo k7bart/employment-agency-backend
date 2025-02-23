@@ -1,0 +1,75 @@
+paths:
+  /agreements:
+    get:
+      tags:
+        - Agreements
+      summary: Find all agreements.
+      description: Finds and returns an array with a list of all agreements.
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/definitions/agreements"
+              example:
+                - _id: 67ae4a8e88d72fd62917c1da
+                  candidateId: 67ae4a8e88d72fd62917c1da
+                  employerId: 67ae4a8e88d72fd62917c1da
+                  commission: 600
+                  __v: 0
+                - _id: 67ae4c5388d72fd62917c1dc
+                  candidateId: 67ae4c5388d72fd62917c1dc
+                  employerId: 67ae4c5388d72fd62917c1dc
+                  commission: 6000
+                  __v: 0
+    post:
+      tags:
+        - Agreements
+      summary: Creates a new agreement.
+      description: Creates a new agreement and it to the database.
+      produces:
+        - application/json
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/definitions/postAgreementBody"
+            example:
+              candidateId: 67ae4a8e88d72fd62917c1da
+              employerId: 67ae4a8e88d72fd62917c1da
+              commission: 600
+  /agreements/:id:
+    get:
+      tags:
+        - Agreements
+      summary: Find agreement by ID.
+      description: Returns a single agreement.
+      produces:
+        - application/json
+      parameters:
+        - name: id
+          in: path
+          description: ID of the agreement to return
+          required: true
+          schema:
+            type: string
+          example: 67ae4a8e88d72fd62917c1da
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/definitions/agreement"
+              example:
+                _id: 67ae4a8e88d72fd62917c1da
+                candidateId: 67ae4a8e88d72fd62917c1da
+                employerId: 67ae4a8e88d72fd62917c1da
+                commission: 600
+                __v: 0
+        404:
+          description: Agreement not found

@@ -36,6 +36,9 @@ definitions:
       - address
       - skills
 
+  candidateId:
+    type: string
+
   candidates:
     type: array
     items:

@@ -1,0 +1,21 @@
+definitions:
+  area:
+    type: object
+    properties:
+      _id:
+        type: string
+      name:
+        type: string
+    required:
+      - _id
+      - name
+
+  areas:
+    type: array
+    items:
+      $ref: "#/definitions/area"
+
+  postAreaBody:
+    type: string
+    minLength: 1
+    maxSalary: 10

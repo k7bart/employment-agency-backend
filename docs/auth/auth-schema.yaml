@@ -1,0 +1,22 @@
+definitions:
+  authBody:
+    type: object
+    properties:
+      email:
+        type: string
+      password:
+        type: string
+    required:
+      - email
+      - password
+
+  authResponse:
+    type: object
+    properties:
+      token:
+        type: string
+      expiresIn:
+        type: number
+    required:
+      - token
+      - expiresIn

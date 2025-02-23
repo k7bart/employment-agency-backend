@@ -1,0 +1,208 @@
+paths:
+  /vacancies:
+    get:
+      tags:
+        - Vacancies
+      summary: Find all vacancies.
+      description: Finds and returns an array with a list of all vacancies.
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/definitions/vacancies"
+              example:
+                - _id: 67ae4a8e88d72fd62917c1da
+                  title: Senior Developer
+                  employer: 67ae4c5388d72fd62917c1dc
+                  area: 67ae4a8e88d72fd62917c1da
+                  maxSalary: 6000
+                  minSalary: 4000
+                  location:
+                    country: USA
+                    flag: "🇺🇸"
+                    city: New York
+                  __v: 0
+
+    post:
+      tags:
+        - Vacancies
+      summary: Creates a new vacancy.
+      description: Creates a new vacancy and it to the database.
+      produces:
+        - application/json
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/definitions/postVacancyBody"
+            example:
+              title: Senior Developer
+              employer: 67ae4c5388d72fd62917c1dc
+              area: 67ae4a8e88d72fd62917c1da
+              maxSalary: 6000
+              minSalary: 4000
+              location:
+                country: USA
+                flag: "🇺🇸"
+                city: New York
+      responses:
+        201:
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/definitions/vacancy"
+              example:
+                _id: 67ae4a8e88d72fd62917c1da
+                title: Senior Developer
+                employer: 67ae4c5388d72fd62917c1dc
+                area: 67ae4a8e88d72fd62917c1da
+                maxSalary: 6000
+                minSalary: 4000
+                location:
+                  country: USA
+                  flag: "🇺🇸"
+                  city: New York
+                __v: 0
+
+  /vacancies/suitable:
+    get:
+      tags:
+        - Vacancies
+    summary: Find all suitable vacancies.
+    description: Finds and returns an array with a list of all suitable vacancies.
+    produces:
+      - application/json
+    parameters:
+      - name: area
+        in: query
+        description: The area of the vacancy.
+        required: true
+        schema:
+        type: string
+      - name: country
+        in: query
+        description: The country of the vacancy.
+        required: true
+        schema:
+        type: string
+      - name: city
+        in: query
+        description: The city of the vacancy.
+        required: true
+        schema:
+        type: string
+      - name: salary
+        in: query
+        description: The salary of the vacancy.
+        schema:
+        type: number
+    responses:
+      200:
+        description: OK
+        content:
+          application/json:
+            schema:
+              $ref: "#/definitions/vacancies"
+            example:
+              - _id: 67ae4a8e88d72fd62917c1da
+                title: Junior Developer
+                employer:
+                  _id: 67ae4a8e88d72fd62917c1da
+                  name: "Google"
+                  address:
+                    country: "USA"
+                    flag: "🇺🇸"
+                    region: "California"
+                    city: "Mountain View"
+                    street: "Amphitheatre Parkway"
+                    house: "1600"
+                  phone: "+1 650-253-0000"
+                area:
+                  _id: 67ae4a8e88d72fd62917c1da
+                  name: IT
+                maxSalary: 6000
+                minSalary: 4000
+                location:
+                  country: USA
+                  flag: "🇺🇸"
+                  city: New York
+                __v: 0
+
+  /vacancies/vacancy/:id:
+    get:
+      tags:
+        - Vacancies
+      summary: Find vacancy by ID.
+      description: Returns a single vacancy.
+      produces:
+        - application/json
+      parameters:
+        - name: id
+          in: path
+          description: ID of the vacancy to return
+          required: true
+          schema:
+            type: string
+            example: 67ae4c5388d72fd62917c1dc
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/definitions/vacancy"
+              example:
+                _id: 67ae4a8e88d72fd62917c1da
+                title: Senior Developer
+                employer: 67ae4c5388d72fd62917c1dc
+                area: 67ae4a8e88d72fd62917c1da
+                maxSalary: 6000
+                minSalary: 4000
+                location:
+                  country: USA
+                  flag: "🇺🇸"
+                  city: New York
+                __v: 0
+
+  /vacancies/employer/:id:
+    get:
+      tags:
+        - Vacancies
+      summary: Find vacancies by employer.
+      description: Returns a list of vacancies by employer.
+      produces:
+        - application/json
+      parameters:
+        - name: id
+          in: path
+          description: ID of the employer to return vacancies
+          required: true
+          schema:
+            type: string
+            example: 67ae4c5388d72fd62917c1dc
+
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/definitions/vacancies"
+              example:
+                - _id: 67ae4a8e88d72fd62917c1da
+                  title: Senior Developer
+                  employer: 67ae4c5388d72fd62917c1dc
+                  area: 67ae4a8e88d72fd62917c1da
+                  maxSalary: 6000
+                  minSalary: 4000
+                  location:
+                    country: USA
+                    flag: "🇺🇸"
+                    city: New York
+                  __v: 0

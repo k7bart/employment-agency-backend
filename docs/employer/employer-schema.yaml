@@ -1,0 +1,64 @@
+definitions:
+  employer:
+    type: object
+    properties:
+      _id:
+        type: string
+      name:
+        type: string
+      address:
+        type: object
+        properties:
+          country:
+            type: string
+          flag:
+            type: string
+          region:
+            type: string
+          city:
+            type: string
+          street:
+            type: string
+          house:
+            type: string
+          office:
+            type: string
+      phone:
+        type: string
+    required:
+      - _id
+      - name
+      - address
+      - phone
+
+  employers:
+    type: array
+    items:
+      $ref: "#/definitions/employer"
+
+  postEmployerBody:
+    type: object
+    properties:
+      name:
+        type: string
+      address:
+        type: object
+        properties:
+          country:
+            type: string
+          region:
+            type: string
+          city:
+            type: string
+          street:
+            type: string
+          house:
+            type: string
+          office:
+            type: string
+      phone:
+        type: string
+    required:
+      - name
+      - address
+      - phone
