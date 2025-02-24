@@ -36,6 +36,7 @@ To install the app, follow these steps:
    ```
 
 4. Create a `.env` file and configure environment variables as needed.
+   Create a `.env` file in the root directory and configure the required environment variables. You can refer to the `.env.example` file in the root directory for guidance.
 
 ## Running the Application
 
@@ -49,10 +50,6 @@ To start the application, follow these steps:
 
 2. Access API documentation:
 
-Once the server is running, Swagger documentation will be available at:
-
-    ```bash
-    http://<your-host>:<your-port>/api-docs/
-    ```
+Once the server is running, Swagger documentation will be available at: http://<your-host>:<your-port>/api-docs/
 
 The application will automatically reload whenever you modify any of the source files(nodemon).
