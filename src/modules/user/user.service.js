@@ -1,8 +1,8 @@
-const User = require("../models/user.model");
+const User = require("./user.model");
 
-const { ALREADY_REGISTERED } = require("../consts/errors");
+const { ALREADY_REGISTERED } = require("../../consts/errors");
 
-const { createError, createNotFoundError } = require("../utils/errorsUtils");
+const { createError, createNotFoundError } = require("../../utils/errorsUtils");
 
 const createUser = async (email, password) => {
   const duplicateUser = await getUserByEmail(email);

@@ -1,5 +1,5 @@
-const Vacancy = require("../models/vacancy.model");
-const { createNotFoundError } = require("../utils/errorsUtils");
+const Vacancy = require("./vacancy.model");
+const { createNotFoundError } = require("../../utils/errorsUtils");
 
 const getSuitableVacancies = async (areaId, country, city, salary) => {
   const query = {

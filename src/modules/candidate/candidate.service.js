@@ -1,5 +1,5 @@
-const Candidate = require("../models/candidate.model");
-const { createNotFoundError } = require("../utils/errorsUtils");
+const Candidate = require("./candidate.model");
+const { createNotFoundError } = require("../../utils/errorsUtils");
 
 const getCandidates = async () => {
   return Candidate.find().populate("area").lean();

@@ -1,9 +1,9 @@
 const tokenService = require("../token/token.service");
 const userService = require("../user/user.service");
 
-const { createError } = require("../utils/errorsUtils");
+const { createError } = require("../../utils/errorsUtils");
 
-const { INCORRECT_CREDENTIALS } = require("../consts/errors");
+const { INCORRECT_CREDENTIALS } = require("../../consts/errors");
 
 const login = async (email, password) => {
   const user = await userService.getUserByEmailWithPassword(email);

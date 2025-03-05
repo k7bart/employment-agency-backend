@@ -1,10 +1,10 @@
 const { Schema, model } = require("mongoose");
 
-const { createRequired } = require("../utils/fieldValidationUtils");
+const { createRequired } = require("../../utils/fieldValidationUtils");
 
-const { FIELD_CANNOT_BE_SHORTER } = require("../consts/errors");
+const { FIELD_CANNOT_BE_SHORTER } = require("../../consts/errors");
 
-const { MIN_NAME_LENGTH } = require("../consts/validation").lengths;
+const { MIN_NAME_LENGTH } = require("../../consts/validation").lengths;
 
 const candidateSchema = new Schema({
   firstName: {

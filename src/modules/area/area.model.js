@@ -1,14 +1,14 @@
 const { Schema, model } = require("mongoose");
 
-const { createRequired } = require("../utils/fieldValidationUtils");
+const { createRequired } = require("../../utils/fieldValidationUtils");
 
 const {
   FIELD_CANNOT_BE_SHORTER,
   FIELD_CANNOT_BE_LONGER,
-} = require("../consts/errors");
+} = require("../../consts/errors");
 
 const { MIN_NAME_LENGTH, MAX_AREA_NAME_LENGTH } =
-  require("../consts/validation").lengths;
+  require("../../consts/validation").lengths;
 
 const areaSchema = new Schema({
   name: {

@@ -1,13 +1,13 @@
 const router = require("express").Router();
 
-const agreement = require("./agreement/agreement.routes");
-const area = require("./area/area.routes");
-const auth = require("./auth/auth.routes");
-const candidate = require("./candidate/candidate.routes");
-const employer = require("./employer/employer.routes");
-const vacancy = require("./vacancy/vacancy.routes");
+const agreement = require("./modules/agreement/agreement.routes");
+const area = require("./modules/area/area.routes");
+const auth = require("./modules/auth/auth.routes");
+const candidate = require("./modules/candidate/candidate.routes");
+const employer = require("./modules/employer/employer.routes");
+const vacancy = require("./modules/vacancy/vacancy.routes");
 
-const { checkAuth } = require("./middlewares/auth");
+const { checkAuth } = require("./middlewares/auth.middleware");
 
 router.use("/agreements", checkAuth, agreement);
 router.use("/areas", checkAuth, area);

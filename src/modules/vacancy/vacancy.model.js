@@ -1,6 +1,6 @@
 const { Schema, model } = require("mongoose");
 
-const { createRequired } = require("../utils/fieldValidationUtils");
+const { createRequired } = require("../../utils/fieldValidationUtils");
 
 const vacancySchema = new Schema({
   title: {

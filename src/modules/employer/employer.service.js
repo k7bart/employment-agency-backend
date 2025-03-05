@@ -1,5 +1,5 @@
-const Employer = require("../models/employer.model");
-const { createNotFoundError } = require("../utils/errorsUtils");
+const Employer = require("./employer.model");
+const { createNotFoundError } = require("../../utils/errorsUtils");
 
 const getEmployers = async () => {
   return Employer.find().lean();

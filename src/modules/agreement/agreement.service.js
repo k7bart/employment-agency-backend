@@ -1,6 +1,6 @@
-const Agreement = require("../models/agreement.model");
+const Agreement = require("./agreement.model");
 
-const { createNotFoundError } = require("../utils/errorsUtils");
+const { createNotFoundError } = require("../../utils/errorsUtils");
 
 const getAgreements = async () => {
   return Agreement.find()

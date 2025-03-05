@@ -1,11 +1,11 @@
 const { Schema, model } = require("mongoose");
 const bcrypt = require("bcrypt");
 
-const { createRequired } = require("../utils/fieldValidationUtils");
+const { createRequired } = require("../../utils/fieldValidationUtils");
 
-const { FIELD_CANNOT_BE_SHORTER } = require("../consts/errors");
+const { FIELD_CANNOT_BE_SHORTER } = require("../../consts/errors");
 
-const { MIN_PASSWORD_LENGTH } = require("../consts/validation").lengths;
+const { MIN_PASSWORD_LENGTH } = require("../../consts/validation").lengths;
 
 const userSchema = new Schema({
   email: {

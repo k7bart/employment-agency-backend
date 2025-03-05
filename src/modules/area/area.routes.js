@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { asyncWrapper } = require("../middlewares/error.middleware");
+const { asyncWrapper } = require("../../middlewares/error.middleware");
 const areasController = require("./area.controller");
 
 router

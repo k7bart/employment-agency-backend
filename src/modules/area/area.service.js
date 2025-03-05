@@ -1,4 +1,4 @@
-const Area = require("../models/area.model");
+const Area = require("./area.model");
 
 const getAreas = async () => {
   return Area.find().lean();

@@ -43,7 +43,7 @@ const serverSetup = async (app) => {
 
   app.use(errorMiddleware);
 
-  return app.listen(SERVER_PORT, () => {
+  return app.listen(SERVER_PORT || 8080, () => {
     console.log(`Server is running on port ${SERVER_PORT}`);
   });
 };

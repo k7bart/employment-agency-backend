@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { asyncWrapper } = require("../middlewares/error.middleware");
+const { asyncWrapper } = require("../../middlewares/error.middleware");
 const authController = require("./auth.controller");
 
 router.post("/login", asyncWrapper(authController.login));

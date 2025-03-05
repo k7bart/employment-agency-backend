@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const agreementsController = require("./agreement.controller");
-const { asyncWrapper } = require("../middlewares/error.middleware");
+const { asyncWrapper } = require("../../middlewares/error.middleware");
 
 router
   .route("/")
